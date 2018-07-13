@@ -4,6 +4,9 @@
 
 * Clone this repo
 * Run `rake db:create`
-* Set up the client side repo and run the client side application
+* Set up the [client side repo](https://github.com/cquinones100/url-shortener-client) and run the client side application
 * Run `rails s -p 3001`
 * Navigate to localhost:3000
+
+###Testing
+run `bundle exec guard` to watch test files. 
