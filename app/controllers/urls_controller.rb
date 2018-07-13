@@ -13,6 +13,8 @@ class UrlsController < ApplicationController
     url = Url.find_by(url: params[:url])
 
     if url
+      url.update_columns(view_count: url.view_count += 1)
+
       return render json: { url: url.original_url }, status: 302
     else
       redirect_to '/'

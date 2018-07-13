@@ -20,6 +20,16 @@ RSpec.describe 'creating urls', type: :request do
 
       expect(JSON.parse(response.body)["url"]).to eq('http://www.google.com')
     end
+
+    it 'increments the url\'s view count' do
+      url = Url.create(original_url: 'http://www.google.com', url: '1', id: 1)
+
+      get '/1/', xhr: true
+
+      url.reload
+
+      expect(url.view_count).to eq(1)
+    end
   end
 
   describe 'when visiting an invalid url' do
