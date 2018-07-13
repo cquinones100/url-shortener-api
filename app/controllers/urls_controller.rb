@@ -3,7 +3,7 @@ class UrlsController < ApplicationController
     url = Url.build_url(url: original_url)
 
     if url.save
-      return render json: { message: 'created' }, status: 201
+      return render json: { message: 'created', url: url.url }, status: 201
     end
 
     return render json: { errors: url.errors }, status: 422
@@ -17,7 +17,7 @@ class UrlsController < ApplicationController
 
       return render json: { url: url.original_url }, status: 302
     else
-      redirect_to '/'
+      render json: { message: 'not found' }, status: 404
     end
   end
 

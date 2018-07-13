@@ -36,7 +36,7 @@ RSpec.describe 'creating urls', type: :request do
     it 'returns the home page' do
       get '/1'
 
-      expect(response).to redirect_to '/'
+      expect(response).to have_http_status(404)
     end
   end
 end
