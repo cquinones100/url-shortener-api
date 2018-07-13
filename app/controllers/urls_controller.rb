@@ -21,7 +21,17 @@ class UrlsController < ApplicationController
     end
   end
 
+  def index
+    urls = Url.all.order(query_params[:order] => query_params[:direction]).limit(100)
+
+    render json: urls, status: 200
+  end
+
   private
+
+  def query_params
+    params.permit(:order, :direction)
+  end
 
   def url_params
     params.require(:url).permit(:original_url)
